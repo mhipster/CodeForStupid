@@ -1,0 +1,65 @@
+
+public class Onlogn {
+    // main
+    public static void main(String[] args) {
+        // ความเร็วอยู่ในระดับปานกลาง
+        // วน loop 2 ชั้น ชั้น 1 ปกติ ชั้นที่ 2 จะตัดข้อมูลที่ไม่เกี่ยวข้องออกไป
+        // Linearithmic 
+        // เช่น merge sort การทำงานจะแบ่งเป็นซ้าย - ขวา
+        int[] array = {8, 2, 5, 3, 4, 7, 6, 1}; // สร้าง arr
+        mergeSort(array); // ส่ง arr ผ่าน merge sort
+
+        for(int i = 0; i < array.length ; i++){ // นับจำนวน arr แล้วต้องไม่น้อยกว่า 0
+            System.out.println(array[i] + " "); // นำ arr ตัวที่ i มาแสดง
+        }
+    }
+    public static void mergeSort(int[] array) {
+        int length = array.length;
+        if(length <= 1) return; // ถ้า arr <= 1 ไม่ต้องแบ่งอีก
+        int middle = length / 2; // ครึ่ง
+        int[] leftArray = new int[middle]; // สร้างอาร์เรย์ของจำนวนเต็มที่มีขนาด middle
+        int[] rightArray = new int[length - middle]; // arr ฝั่งขวา
+        int i = 0; // arr ซ้าย
+        int j = 0; // arr ขวา
+        for(;i < length ;i++){
+            if(i < middle){
+                leftArray[i] = array[i];
+            }
+            else{
+                rightArray[j] = array[i];
+                j++;
+            }
+        }
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+        merge(leftArray, rightArray, array);
+    }
+    public static void merge(int[] leftArray,int[] rightArray,int[] array){ // แบ่ง arr เป็นสองฝั่งคือซ้ายกับขวา
+        int leftSize = array.length / 2;
+        int rightSize = array.length - leftSize;
+        int i = 0, l = 0, r = 0; 
+        // l = left arr , r = right arr
+        // check the conditions for merging.
+        while(l < leftSize && r < rightSize){
+            if(leftArray[l] < rightArray[r]){
+                array[i] = leftArray[l];
+                i++;
+                l++;
+            }else {
+                array[i] = rightArray[r];
+                i++;
+                r++;
+            }
+        }
+        while(l < leftSize){
+            array[i] = leftArray[l];
+            i++;
+            l++;
+        }
+        while(r < rightSize){
+            array[i] = rightArray[r];
+            i++;
+            r++;
+        }
+    }
+}

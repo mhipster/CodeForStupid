@@ -1,5 +1,5 @@
 
-public class Onlogn {
+public class MergeSort {
     // main
     public static void main(String[] args) {
         // ความเร็วอยู่ในระดับปานกลาง

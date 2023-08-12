@@ -1,4 +1,4 @@
-// นางสาวมณิฐชญาณ์ ธมนันท์พงษา 653380323-8 sec3
+// Manitchaya Thamanunpongsa sec3
 import java.util.Scanner;
 
 public class ExpressionTest {

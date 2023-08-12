@@ -1,0 +1,38 @@
+class Node {
+    private static String item;
+    private Node link; // เก็บค่า link
+
+    // head node
+    public Node() {
+        link = null;
+    } 
+    // last node
+    public Node(String newItem){
+        item = newItem;
+        link = null;
+    }
+    // node ใดๆ
+    public Node(String newItem,Node nextNode){
+        item = newItem;
+        link = nextNode;
+    }
+    public String getItem() {
+        return item;
+    }
+    public void setItem(String newItem) {
+        item = newItem;
+    }
+    public Node getLink() {
+        return link;
+    }
+    public void setLink(Node nextNode) {
+        link = nextNode;
+    }
+    public static void main(String[] args) {
+        // การสร้าง Node
+        Node head = new Node();
+        // สร้าง node เพื่อเข้าสู่ linked list
+        Node newNode = new Node(item);
+        head = newNode;
+    } 
+}

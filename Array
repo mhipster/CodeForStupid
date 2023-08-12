@@ -1,0 +1,28 @@
+public class Array {
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+        System.out.print("Please input n: "); // รับค่า n
+        int n = kb.nextInt();
+
+        System.out.print("Location of X : "); // รับค่าบรรทัดเดียวกัน
+        int location[] = new int[n]; 
+        //เก็บค่า Array ในตัวแปร location แบบจำนวนเต็ม n คือขนาดที่เก็บตัวเลข
+        
+        for(int i = 0; i < n; i++){
+            location[i] = kb.nextInt(); // วน Loop รับค่าเป็นจำนวนเต็มมาเก็บไว้ใน Array
+        }
+        System.out.println("-----------------------");
+        // คำนวณระยะทาง
+        int start = 0; 
+        int sum = 0;
+        for(int i = 0; i < location.length;i++){
+            int move = location[i];
+            //ในแต่ละรอบของลูปจะอ่านค่าที่อยู่ในช่องของอาร์เรย์ location ที่มี index เป็น i และเก็บค่านั้นในตัวแปร move
+            int distance = Math.abs(move - start); // คำนวณระยะทางที่เคลื่อนได้ - เริ่มต้น
+            sum += distance;
+            System.out.println("Distance from " + start + " to " + move + " : " + distance);
+            start = move; // กำหนดค่า start ให้มีค่าเป็น move เพื่อใช้ในการคำนวณระยะทางในรอบถัดไป โดย start จะถูกอัปเดตเป็นตำแหน่งใหม่ที่เคลื่อนที่ไปในแต่ละรอบของลูป.
+        }
+        System.out.println("\n\nTotal Distance : " + sum); 
+    }
+}
